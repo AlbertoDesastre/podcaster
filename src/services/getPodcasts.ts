@@ -1,29 +1,46 @@
 import { getCache, saveOnCache } from "./cacheService/cacheService";
 import constants from "@/constants.json";
-import { podcastsLongTemplate } from "@/assets";
 import { ApiResponse, Feed, Podcast } from "@/app/mocks/podcastList";
+import { useState, useEffect } from "react";
 
-// this is the fake version that doesn't call the real API. Correct this based on "usePodcast" custom hook
-function getPodcasts() {
-  const { data, expirated } = getCache({
-    storageName: constants.PODCAST_NAMING.list,
-  });
+function usePodcasts() {
+  const [podcasts, setPodcasts] = useState<Podcast[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  if (!data || (data && expirated === true)) {
-    localStorage.removeItem(constants.PODCAST_NAMING.list);
+  useEffect(() => {
+    const getPodcasts = async () => {
+      try {
+        const { data, expirated } = getCache({
+          storageName: constants.PODCAST_NAMING.list,
+        });
 
-    saveOnCache({
-      storageName: constants.PODCAST_NAMING.list,
-      data: podcastsLongTemplate,
-      expirationDate: new Date(),
-    });
-  }
+        // if there is already data cached, or the one we have is older than 24h, we will fetch it
+        if (!data || (data && expirated === true)) {
+          localStorage.removeItem(constants.PODCAST_NAMING.list);
 
-  const { data: cachedPodcasts } = getCache({
-    storageName: constants.PODCAST_NAMING.list,
-  });
+          const newPodcasts = await fetchPodcasts();
 
-  return { podcastsList: cachedPodcasts as Podcast[] };
+          setPodcasts(newPodcasts);
+
+          saveOnCache({
+            storageName: constants.PODCAST_NAMING.list,
+            data: newPodcasts,
+            expirationDate: new Date(),
+          });
+        } else {
+          setPodcasts(data as Podcast[]);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getPodcasts();
+  }, []);
+
+  return { podcasts, loading };
 }
 
 async function fetchPodcasts() {
@@ -45,4 +62,4 @@ async function fetchPodcasts() {
     });
 }
 
-export { getPodcasts, fetchPodcasts };
+export { usePodcasts };
