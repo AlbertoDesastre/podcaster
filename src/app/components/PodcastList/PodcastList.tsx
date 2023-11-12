@@ -31,7 +31,6 @@ function PodcastList({ podcasts }: { podcasts: Podcast[] }) {
   );
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value);
-    console.log(event.target.value);
 
     if (event.target.value === "") {
       setMatchingPodcasts(podcasts);
