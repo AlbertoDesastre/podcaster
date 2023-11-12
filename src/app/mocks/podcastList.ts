@@ -1,4 +1,4 @@
-export type PodcastInfo = {
+export type Podcast = {
   "im:name": { label: string };
   "im:image": Array<{ label: string; attributes: { height: string } }>;
   summary: { label: string };
@@ -20,7 +20,7 @@ export type PodcastInfo = {
 
 export type Feed = {
   author: { name: { label: string }; uri: { label: string } };
-  entry: PodcastInfo[];
+  entry: Podcast[];
 };
 
 type ApiContent = {

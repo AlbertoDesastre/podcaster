@@ -1,17 +1,7 @@
 import { getCache, saveOnCache } from "./cacheService/cacheService";
 import constants from "@/constants.json";
 import { podcastsLongTemplate } from "@/assets";
-import { ApiResponse, Feed, PodcastInfo } from "@/app/mocks/podcastList";
-
-export type Podcast = {
-  id: string;
-  title: string;
-  artist: string;
-  images: Array<{
-    attributes: { height: string };
-    label: string;
-  }>;
-};
+import { ApiResponse, Feed, Podcast } from "@/app/mocks/podcastList";
 
 // this is the fake version that doesn't call the real API. Correct this based on "usePodcast" custom hook
 function getPodcasts() {
@@ -43,9 +33,10 @@ async function fetchPodcasts() {
     .then((res) => {
       return res.json();
     })
+
     .then((response: ApiResponse) => {
-      const podcasts: PodcastInfo[] = (JSON.parse(response.contents) as Feed)
-        .entry;
+      const podcasts = (JSON.parse(response.contents).feed as Feed).entry;
+
       return podcasts;
     })
     .catch((err) => {
@@ -54,4 +45,4 @@ async function fetchPodcasts() {
     });
 }
 
-export { getPodcasts };
+export { getPodcasts, fetchPodcasts };
