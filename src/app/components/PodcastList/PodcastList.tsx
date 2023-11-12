@@ -38,7 +38,7 @@ function PodcastList({ podcasts }: { podcasts: Podcast[] }) {
       setCountMatchingPodcasts(podcasts.length);
     } else {
       const resultOfFilter = filterByTitleAndName({
-        textToFind: filter,
+        textToFind: event.target.value,
         podcastArray: podcasts,
       });
       setMatchingPodcasts(resultOfFilter);
