@@ -1,0 +1,23 @@
+@import "../../../styles/index.scss";
+
+header.main {
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: $gray-transparent-border;
+  box-shadow: $gray-transparent-border-translucid;
+
+  a {
+    text-decoration: none;
+    h1 {
+      font-weight: 600;
+      font-size: 2rem;
+      padding: 0.5rem;
+      color: $dark-blue;
+    }
+  }
+
+  div {
+    align-self: center;
+  }
+}
