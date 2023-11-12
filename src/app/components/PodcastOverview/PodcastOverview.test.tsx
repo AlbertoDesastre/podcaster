@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { prettyDOM, render } from "@testing-library/react";
+import { prettyDOM, render, screen } from "@testing-library/react";
 
 import PodcastOverview from "./PodcastOverview";
 
@@ -173,15 +173,13 @@ describe("PODCAST LIST", () => {
   ];
 
   test("should not render <PodcastCard>", () => {
-    const view = render(
+    render(
       <PodcastOverview>
         <PodcastList podcasts={[]} />
       </PodcastOverview>
     );
-    // console.log(prettyDOM(view.container));
-    const img = view.container.querySelector("img");
 
-    expect(img).toBeNull();
+    expect(() => screen.getByText(/Author/i)).toThrow();
   });
 
   test("should render the elements of a <PodcastCard> if props are not an empty array", () => {

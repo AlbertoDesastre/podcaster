@@ -13,7 +13,7 @@ describe("EPISODE DETAI - (page --> episode/[episodeId]", () => {
         title={mockEpisodeSummary.title}
         summary={mockEpisodeSummary.summary}
         audio={mockEpisodeSummary.audio}
-        episodeId={mockEpisodeSummary.id}
+        params={{ id: "1", episodeId: "1" }}
       />
     );
 
