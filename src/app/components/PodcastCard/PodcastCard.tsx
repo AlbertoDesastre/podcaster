@@ -1,25 +1,21 @@
-import { Podcast } from "@/services/getPodcasts";
 import { StyledPodcastCard } from "./StyledPodcastCard";
 import Link from "next/link";
 import constants from "@/constants.json";
+import { Podcast } from "@/app/mocks/podcastList";
 
 function PodcastCard({ podcast }: { podcast: Podcast }) {
+  const id = podcast.id.label;
   return (
     <StyledPodcastCard>
       <article>
-        {/*
-          Since the real API it's down I will place a hardcoded image
-          
-       
-       <img alt="podcast-image" src={podcast.images[2].label}></img> */}
         <Link
-          key={podcast.id}
-          href={constants.ROUTES["podcast-detail"] + `${podcast.id}`}
+          key={podcast.id.label}
+          href={constants.ROUTES["podcast-detail"] + `${podcast.id.label}`}
         >
-          <img alt="podcast-image" src="/assets/imgs/Podcast.jpg" />
+          <img alt="podcast-image" src={podcast["im:image"][2].label} />
           <div className="box-separator">
-            <h2>{podcast.title}</h2>
-            <h3>Author: {podcast.artist}</h3>
+            <h2>{podcast.title.label}</h2>
+            <h3>Author: {podcast["im:artist"].label}</h3>
           </div>
         </Link>
       </article>

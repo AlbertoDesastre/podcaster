@@ -3,7 +3,7 @@ import PodcastCard from "../PodcastCard/PodcastCard";
 import "./PodcastList.scss";
 import Link from "next/link";
 import constants from "@/constants.json";
-import { Podcast } from "@/services/getPodcasts";
+import { Podcast } from "@/app/mocks/podcastList";
 
 function filterByTitleAndName({
   textToFind,
@@ -13,8 +13,8 @@ function filterByTitleAndName({
   podcastArray: Podcast[];
 }) {
   const filteredPodcasts = podcastArray.filter((podcast) => {
-    const title = podcast.title.toLowerCase();
-    const artist = podcast.artist.toLowerCase();
+    const title = podcast.title.label.toLowerCase();
+    const artist = podcast["im:artist"].label.toLowerCase();
     const matchingText = textToFind.toLowerCase();
 
     return title.includes(matchingText) || artist.includes(matchingText);
@@ -60,7 +60,7 @@ function PodcastList({ podcasts }: { podcasts: Podcast[] }) {
 
       <ul className="podcast-list">
         {matchingPodcasts.map((podcast) => {
-          return <PodcastCard key={podcast.id} podcast={podcast} />;
+          return <PodcastCard key={podcast.id.label} podcast={podcast} />;
         })}
       </ul>
     </>
