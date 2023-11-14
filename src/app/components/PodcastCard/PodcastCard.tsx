@@ -4,13 +4,13 @@ import constants from "@/constants.json";
 import { Podcast } from "@/app/mocks/podcastList";
 
 function PodcastCard({ podcast }: { podcast: Podcast }) {
-  const id = podcast.id.label;
+  const id = podcast.id.attributes.imId;
   return (
     <StyledPodcastCard>
       <article>
         <Link
           key={podcast.id.label}
-          href={constants.ROUTES["podcast-detail"] + `${podcast.id.label}`}
+          href={constants.ROUTES["podcast-detail"] + `${id}`}
         >
           <img alt="podcast-image" src={podcast["im:image"][2].label} />
           <div className="box-separator">
