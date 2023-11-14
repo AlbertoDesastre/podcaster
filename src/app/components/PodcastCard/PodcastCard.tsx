@@ -4,7 +4,8 @@ import constants from "@/constants.json";
 import { Podcast } from "@/app/mocks/podcastList";
 
 function PodcastCard({ podcast }: { podcast: Podcast }) {
-  const id = podcast.id.attributes.imId;
+  const id = podcast.id.attributes["im:id"];
+
   return (
     <StyledPodcastCard>
       <article>

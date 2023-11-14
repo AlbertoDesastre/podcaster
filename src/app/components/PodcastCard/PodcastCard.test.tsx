@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { prettyDOM, render, screen } from "@testing-library/react";
+import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
 
 import PodcastCard from "./PodcastCard";
 import { Podcast } from "@/app/mocks/podcastList";
@@ -39,7 +39,7 @@ describe("PODCAST CARD", () => {
       },
       id: {
         label: "https://example.com/techtalk",
-        attributes: { imId: "123456789" },
+        attributes: { "im:id": "123456789" },
       },
       "im:artist": {
         label: "Tech Talk Network",
@@ -47,7 +47,7 @@ describe("PODCAST CARD", () => {
       },
       category: {
         attributes: {
-          imId: "1310",
+          "im:id": "1310",
           term: "Technology",
           scheme: "https://example.com/techscheme",
           label: "Technology",
@@ -94,7 +94,7 @@ describe("PODCAST CARD", () => {
       },
       id: {
         label: "https://example.com/sciencehour",
-        attributes: { imId: "987654321" },
+        attributes: { "im:id": "987654321" },
       },
       "im:artist": {
         label: "Science Hour Network",
@@ -102,7 +102,7 @@ describe("PODCAST CARD", () => {
       },
       category: {
         attributes: {
-          imId: "1315",
+          "im:id": "1315",
           term: "Science",
           scheme: "https://example.com/sciencescheme",
           label: "Science",
@@ -149,7 +149,7 @@ describe("PODCAST CARD", () => {
       },
       id: {
         label: "https://example.com/comedyclub",
-        attributes: { imId: "567890123" },
+        attributes: { "im:id": "567890123" },
       },
       "im:artist": {
         label: "Comedy Club Network",
@@ -157,7 +157,7 @@ describe("PODCAST CARD", () => {
       },
       category: {
         attributes: {
-          imId: "1320",
+          "im:id": "1320",
           term: "Comedy",
           scheme: "https://example.com/comedyscheme",
           label: "Comedy",
@@ -193,7 +193,7 @@ describe("PODCAST CARD", () => {
     render(<PodcastCard podcast={mockPodcasts[0]} />);
 
     const linkToAnotherPage = document.querySelector("a")?.getAttribute("href");
-    const podcastId = mockPodcasts[0].id.attributes.imId;
+    const podcastId = mockPodcasts[0].id.attributes["im:id"];
 
     expect(linkToAnotherPage).toEqual(`/podcast/${podcastId}`);
   });

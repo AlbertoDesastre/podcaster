@@ -3,7 +3,7 @@
 import Dashboard from "./components/Dashboard/Dashboard";
 import PodcastOverview from "./components/PodcastOverview/PodcastOverview";
 import PodcastList from "./components/PodcastList/PodcastList";
-import { usePodcasts } from "@/services/getPodcasts";
+import { usePodcasts } from "@/app/hooks/usePodcasts";
 
 import "../styles/index.scss";
 

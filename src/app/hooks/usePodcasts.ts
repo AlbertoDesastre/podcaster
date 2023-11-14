@@ -1,4 +1,7 @@
-import { getCache, saveOnCache } from "./cacheService/cacheService";
+import {
+  getCache,
+  saveOnCache,
+} from "../../services/cacheService/cacheService";
 import constants from "@/constants.json";
 import { ApiResponse, Feed, Podcast } from "@/app/mocks/podcastList";
 import { useState, useEffect } from "react";
