@@ -1,10 +1,7 @@
 import "@testing-library/jest-dom";
-import { prettyDOM, render } from "@testing-library/react";
-
-import PodcastOverview from "../PodcastOverview/PodcastOverview";
+import { prettyDOM, render, screen } from "@testing-library/react";
 
 import PodcastCard from "./PodcastCard";
-import PodcastList from "../PodcastList/PodcastList";
 import { Podcast } from "@/app/mocks/podcastList";
 
 describe("PODCAST CARD", () => {
@@ -173,25 +170,31 @@ describe("PODCAST CARD", () => {
     },
   ];
 
-  test("should render the articles owned by <PodcastCard>", () => {
-    const view = render(
-      <PodcastOverview>
-        <PodcastList podcasts={mockPodcasts} />
-      </PodcastOverview>
-    );
-    const articles = view.container.querySelectorAll("article");
-
-    expect(articles.length).toEqual(mockPodcasts.length);
-  });
-
   test("should render the correct elements of the Podcast passed", () => {
-    const view = render(<PodcastCard podcast={mockPodcasts[0]} />);
+    render(<PodcastCard podcast={mockPodcasts[0]} />);
 
-    const h2Text = view.getByText(mockPodcasts[0].title.label);
-    const pText = view.getByText(/Tech Talk Network/i); // this equals to the artist of the first position of mockPodcast
+    const h2Text = screen.getByText(mockPodcasts[0].title.label);
+    const pText = screen.getByText(/Tech Talk Network/i); // this equals to the artist of the first position of mockPodcast
 
     //console.log(prettyDOM(img as HTMLImageElement));
     expect(h2Text).toBeInTheDocument();
     expect(pText).toBeInTheDocument();
+  });
+
+  test("should render a link constructed correctly", () => {
+    render(<PodcastCard podcast={mockPodcasts[0]} />);
+
+    const link = screen.getByRole("link");
+
+    expect(link).toBeInTheDocument();
+  });
+
+  test("should render a link constructed correctly", () => {
+    render(<PodcastCard podcast={mockPodcasts[0]} />);
+
+    const linkToAnotherPage = document.querySelector("a")?.getAttribute("href");
+    const podcastId = mockPodcasts[0].id.attributes.imId;
+
+    expect(linkToAnotherPage).toEqual(`/podcast/${podcastId}`);
   });
 });
