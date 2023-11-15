@@ -6,8 +6,10 @@ import PodcastFigure from "./PodcastFigure/PodcastFigure";
 import PodcastEpisodeList from "./PodcastEpisodeList/PodcastEpisodeList";
 import "./page.scss";
 import { getEpisodes } from "@/services/getEpisodes";
+import { podcastDetailContentParsed } from "@/app/mocks/podcastDetail";
 
 function PodcastDetail({ params }: { params: { id: string } }) {
+  // hacer hook y llamada a la api. Ejecutar dentro del hook la función que filtra los episodios.
   const { episodes } = getEpisodes();
   const episode = episodes.find(
     (matchingEpisode) => matchingEpisode.id === params.id

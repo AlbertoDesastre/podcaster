@@ -37,7 +37,7 @@ type ApiContent = {
   link: { attributes: { rel: string; type: string; href: string } }[];
 };
 
-type Status = {
+export type Status = {
   url: string;
   content_type: string;
   http_code: number;
