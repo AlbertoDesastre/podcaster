@@ -5,7 +5,7 @@ import PodcastFigure from "../../PodcastFigure/PodcastFigure";
 
 import EpisodeSummary from "./EpisodeSummary/EpisodeSummary";
 import { getSummaries } from "@/services/getSummaries";
-import { getEpisodes } from "@/services/getEpisodes";
+import { usePisodes } from "@/app/hooks/useEpisodes";
 import "./page.scss";
 
 function EpisodeDetail({
@@ -14,7 +14,7 @@ function EpisodeDetail({
   params: { id: string; episodeId: string };
 }) {
   const { summaries } = getSummaries();
-  const { episodes } = getEpisodes();
+  const { episodes } = usePisodes();
   //console.log(params);
 
   const summary = summaries.find(
