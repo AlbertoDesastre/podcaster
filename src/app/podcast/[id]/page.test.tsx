@@ -19,7 +19,6 @@ describe("PODCAST DETAIL - (page --> podcast[id)", () => {
     expect(view.queryByText(podcastEpisodes[6].title)).toBeNull();
     expect(view.queryByText(podcastEpisodes[6].artist)).toBeNull();
   });
-
   test("should handle a podcast episode not found", () => {
     const params = { id: "90790" };
     const view = render(<PodcastDetail params={params} />);

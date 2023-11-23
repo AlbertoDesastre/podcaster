@@ -30,7 +30,7 @@ function getCache({ storageName }: getCacheParams) {
       return { data: null, expirationDate: null, expirated: true };
     }
 
-    let parsedData: { data: Object; expirationDate: string } = JSON.parse(data);
+    let parsedData: { data: string; expirationDate: string } = JSON.parse(data);
 
     return {
       data: parsedData.data,

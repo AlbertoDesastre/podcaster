@@ -8,36 +8,29 @@ import "./page.scss";
 import { useEpisodes } from "@/app/hooks/useEpisodes";
 
 function PodcastDetail({ params }: { params: { id: string } }) {
-  // <-- this id it's the artistId coming from previous page.
-  // hacer hook y llamada a la api. Ejecutar dentro del hook la función que filtra los episodios.
-  const { episodes } = useEpisodes({ artistId: params.id });
-  const episode = episodes.find(
-    (matchingEpisode) => matchingEpisode.id === params.id
-  );
-
-  if (!episode) {
-    return (
-      <Dashboard loading={false}>
-        <h1>Podcast Not Found</h1>
-      </Dashboard>
-    );
-  }
+  // this id it's the artistId coming from ^ previous page ^.
+  const { episodes, podcast, loading } = useEpisodes({ artistId: params.id });
 
   return (
     <Dashboard loading={false}>
-      <div className="podcast-episodes-container">
-        <PodcastFigure
-          title={episode.title}
-          artist={episode.artist}
-          description={episode.description}
-          params={params}
-        />
-        {/* It's necessary to pass the object params since it will be used to redirect to the correct podcast when navigating */}
-        <PodcastEpisodeList
-          podcastEpisodes={episode.episodes}
-          params={params}
-        />
-      </div>
+      {loading && <h1>Loading episodes...</h1>}
+
+      {podcast ? (
+        <div className="podcast-episodes-container">
+          <PodcastFigure
+            title={podcast.trackName}
+            artist={podcast.artistName}
+            description={podcast.trackName}
+            params={params}
+          />
+          {/* It's necessary to pass the object params since it will be used to redirect to the correct podcast when navigating */}
+          <PodcastEpisodeList podcastEpisodes={episodes} params={params} />
+        </div>
+      ) : (
+        !loading && <h1>Podcast not found</h1>
+      )}
+
+      {}
     </Dashboard>
   );
 }

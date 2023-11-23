@@ -3,59 +3,81 @@ import {
   saveOnCache,
 } from "../../services/cacheService/cacheService";
 import constants from "@/constants.json";
-import { podcastEpisodes } from "@/assets";
+
 import { ApiResponse } from "../mocks/podcastList";
-import { PodcastDetail, PodcastDetailResults } from "../mocks/podcastDetail";
-import { useEffect, useState } from "react";
-
-export type PodcastEpisode = {
-  id: string;
-  episodeTitle: string;
-  date: string;
-  duration: string; // for example --> "14:00"
-};
-
-type PodcastFullDetail = {
-  id: string;
-  title: string;
-  artist: string;
-  description: string;
-  // image
-  episodes: PodcastEpisode[];
-};
+import {
+  PodcastArtistAndEpisodesResults,
+  PodcastEpisode,
+  PodcastInfo,
+} from "../mocks/podcastDetail";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 export function useEpisodes({ artistId }: { artistId: string }) {
-  const [episodes, setEpisodes] = useState<PodcastDetail[]>([]);
+  const [podcast, setPodcast] = useState<PodcastInfo>();
+  const [episodes, setEpisodes] = useState<PodcastEpisode[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const { data, expirated } = getCache({
-    storageName: constants.PODCAST_NAMING.episodes,
-  });
+  const episodeCacheName =
+    constants.PODCAST_NAMING.episodes + `:artistId_${artistId}`;
 
-  useEffect(() => {}, [artistId]);
-
-  if (!data || (data && expirated === true)) {
-    localStorage.removeItem(constants.PODCAST_NAMING.episodes);
-
-    saveOnCache({
-      storageName: constants.PODCAST_NAMING.episodes,
-      data: podcastEpisodes,
-      expirationDate: new Date(),
+  useEffect(() => {
+    const { data, expirated } = getCache({
+      storageName: episodeCacheName,
     });
-  }
 
-  const { data: cachedPodcastEpisodes } = getCache({
-    storageName: constants.PODCAST_NAMING.episodes,
-  });
+    if (!data || (data && expirated === true)) {
+      localStorage.removeItem(episodeCacheName);
+      try {
+        const getPodcastAndEpisodes = async () => {
+          const { fetchedPodcast, fetchedEpisodes } = await fetchEpisodes({
+            artistId,
+            episodeQuantity: "5",
+            setLoading,
+          });
 
-  return { episodes: cachedPodcastEpisodes as PodcastFullDetail[] };
+          setPodcast(fetchedPodcast);
+          setEpisodes(fetchedEpisodes);
+          setLoading(false);
+
+          saveOnCache({
+            storageName: episodeCacheName,
+            data: JSON.stringify({
+              podcast: fetchedPodcast,
+              episodes: fetchedEpisodes,
+            }),
+            expirationDate: new Date(),
+          });
+        };
+
+        getPodcastAndEpisodes();
+      } catch (error) {
+        console.error("This error happened on /podcast --> " + error);
+      } finally {
+      }
+    } else {
+      const {
+        podcast,
+        episodes,
+      }: { podcast: PodcastInfo; episodes: PodcastEpisode[] } =
+        JSON.parse(data);
+
+      setPodcast(podcast);
+      setEpisodes(episodes);
+      setLoading(false);
+    }
+  }, [artistId, episodeCacheName]);
+
+  return { episodes, podcast, loading };
 }
 
 async function fetchEpisodes({
   artistId,
   episodeQuantity,
+  setLoading,
 }: {
   artistId: string;
   episodeQuantity: string;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }) {
   return await fetch(
     constants.URLs.allOrigin +
@@ -68,13 +90,18 @@ async function fetchEpisodes({
     })
 
     .then((response: ApiResponse) => {
-      const episodes = (JSON.parse(response.contents) as PodcastDetailResults)
-        .results;
+      const artistAndEpisodes = (
+        JSON.parse(response.contents) as PodcastArtistAndEpisodesResults
+      ).results;
 
-      return episodes;
+      const fetchedPodcast = artistAndEpisodes[0];
+      const fetchedEpisodes = artistAndEpisodes.slice(1) as PodcastEpisode[];
+
+      return { fetchedPodcast, fetchedEpisodes };
     })
     .catch((err) => {
       console.error("There was an error while getting the podasts episodes.");
-      return [];
+      setLoading(false);
+      throw Error("There was an error while getting the podasts episodes.");
     });
 }
