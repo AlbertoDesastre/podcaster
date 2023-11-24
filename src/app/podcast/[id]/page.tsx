@@ -25,7 +25,7 @@ function PodcastDetail({ params }: { params: { id: string } }) {
           />
 
           {/* It's necessary to pass the object params since it will be used to redirect to the correct podcast when navigating */}
-          <PodcastEpisodeList podcastEpisodes={episodes} params={params} />
+          <PodcastEpisodeList episodes={episodes} params={params} />
         </div>
       ) : (
         !loading && <h1>Podcast not found</h1>

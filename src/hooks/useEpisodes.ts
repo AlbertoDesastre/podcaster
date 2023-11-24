@@ -55,8 +55,9 @@ export function useEpisodes({ artistId }: { artistId: string }) {
       const {
         podcast,
         episodes,
-      }: { podcast: PodcastInfo; episodes: PodcastEpisode[] } =
-        JSON.parse(data);
+      }: { podcast: PodcastInfo; episodes: PodcastEpisode[] } = JSON.parse(
+        data as string
+      );
 
       setPodcast(podcast);
       setEpisodes(episodes);

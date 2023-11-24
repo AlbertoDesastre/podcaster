@@ -3,17 +3,17 @@ import { StyledPodcastEpisodeList } from "./StyledPodcastEpisodeList";
 import { PodcastEpisode } from "@/models/PodcastEpisode";
 
 function PodcastEpisodeList({
-  podcastEpisodes,
+  episodes,
   params,
 }: {
-  podcastEpisodes: PodcastEpisode[];
+  episodes: PodcastEpisode[];
   params: { id: string };
 }) {
   // console.log(podcastEpisodes);
 
   return (
     <StyledPodcastEpisodeList>
-      <h1>Episodes: {podcastEpisodes.length}</h1>
+      <h1>Episodes: {episodes.length}</h1>
 
       <div className="table-container">
         <table>
@@ -24,16 +24,18 @@ function PodcastEpisodeList({
               <th>Duration</th>
             </tr>
 
-            {podcastEpisodes.map((episode) => {
+            {episodes.map((episode) => {
               return (
-                <tr key={episode.id}>
+                <tr key={episode.episodeGuid}>
                   <td>
-                    <Link href={`/podcast/${params.id}/episode/${episode.id}`}>
-                      {episode.episodeTitle}
+                    <Link
+                      href={`/podcast/${params.id}/episode/${episode.episodeUrl}`}
+                    >
+                      {episode.trackName}
                     </Link>
                   </td>
-                  <td> {episode.date}</td>
-                  <td> {episode.duration}</td>
+                  <td> {episode.releaseDate}</td>
+                  <td> {episode.episodeContentType}</td>
                 </tr>
               );
             })}

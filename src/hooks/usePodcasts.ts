@@ -30,8 +30,7 @@ function usePodcasts() {
             expirationDate: new Date(),
           });
         } else {
-          // review this on the component
-          setPodcasts(JSON.parse(data) as Podcast[]);
+          setPodcasts(data as Podcast[]);
         }
       } catch (error) {
         console.error(error);
