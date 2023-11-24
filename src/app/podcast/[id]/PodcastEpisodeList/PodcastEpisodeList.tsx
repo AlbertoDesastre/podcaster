@@ -1,7 +1,6 @@
 import Link from "next/link";
-
 import { StyledPodcastEpisodeList } from "./StyledPodcastEpisodeList";
-import { PodcastEpisode } from "@/app/hooks/useEpisodes";
+import { PodcastEpisode } from "@/models/PodcastEpisode";
 
 function PodcastEpisodeList({
   podcastEpisodes,

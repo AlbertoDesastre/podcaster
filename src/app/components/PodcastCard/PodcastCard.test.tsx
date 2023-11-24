@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
 
 import PodcastCard from "./PodcastCard";
-import { Podcast } from "@/app/mocks/podcastList";
+import { Podcast } from "@/mocks/mockPodcast";
 
 describe("PODCAST CARD", () => {
   let mockPodcasts: Podcast[] = [

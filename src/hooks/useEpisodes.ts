@@ -1,15 +1,12 @@
-import {
-  getCache,
-  saveOnCache,
-} from "../../services/cacheService/cacheService";
+import { getCache, saveOnCache } from "../services/cacheService/cacheService";
 import constants from "@/constants.json";
-
-import { ApiResponse } from "../mocks/podcastList";
+import { ApiResponse } from "@/models/Api";
 import {
   PodcastArtistAndEpisodesResults,
   PodcastEpisode,
   PodcastInfo,
-} from "../mocks/podcastDetail";
+} from "@/models/PodcastEpisode";
+
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 export function useEpisodes({ artistId }: { artistId: string }) {

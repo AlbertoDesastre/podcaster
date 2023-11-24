@@ -1,4 +1,4 @@
-import { Podcast } from "@/app/mocks/podcastList";
+import { Podcast } from "@/mocks/mockPodcast";
 import { useEffect, useState } from "react";
 
 export default function useFilterPodcasts({

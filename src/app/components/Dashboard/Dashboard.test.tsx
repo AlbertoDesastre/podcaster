@@ -6,7 +6,7 @@ import Dashboard from "./Dashboard";
 import PodcastOverview from "../PodcastOverview/PodcastOverview";
 import PodcastList from "../PodcastList/PodcastList";
 
-import { Podcast } from "@/app/mocks/podcastList";
+import { Podcast } from "@/mocks/mockPodcast";
 
 describe("DASHBOARD", () => {
   let mockPodcasts: Podcast[] = [

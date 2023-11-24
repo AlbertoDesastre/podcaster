@@ -5,7 +5,7 @@ import PodcastFigure from "./PodcastFigure/PodcastFigure";
 
 import PodcastEpisodeList from "./PodcastEpisodeList/PodcastEpisodeList";
 import "./page.scss";
-import { useEpisodes } from "@/app/hooks/useEpisodes";
+import { useEpisodes } from "@/hooks/useEpisodes";
 
 function PodcastDetail({ params }: { params: { id: string } }) {
   // this id it's the artistId coming from ^ previous page ^.

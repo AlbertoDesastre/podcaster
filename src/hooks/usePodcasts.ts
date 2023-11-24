@@ -1,9 +1,8 @@
-import {
-  getCache,
-  saveOnCache,
-} from "../../services/cacheService/cacheService";
+import { getCache, saveOnCache } from "../services/cacheService/cacheService";
 import constants from "@/constants.json";
-import { ApiResponse, Feed, Podcast } from "@/app/mocks/podcastList";
+import { ApiResponse } from "@/models/Api";
+import { Feed, Podcast } from "@/models/Podcast";
+
 import { useState, useEffect } from "react";
 
 function usePodcasts() {
@@ -31,7 +30,8 @@ function usePodcasts() {
             expirationDate: new Date(),
           });
         } else {
-          setPodcasts(data as Podcast[]);
+          // review this on the component
+          setPodcasts(JSON.parse(data) as Podcast[]);
         }
       } catch (error) {
         console.error(error);

@@ -1,3 +1,5 @@
+import { PodcastEpisode, PodcastInfo } from "./models/PodcastEpisode";
+
 const episodesDetail = [
   {
     id: "1",
@@ -601,8 +603,6 @@ const episodesDetail = [
   },
 ];
 
-import { PodcastEpisode, PodcastInfo } from "./app/mocks/podcastDetail";
-
 const mockPodcastInfo: PodcastInfo = {
   wrapperType: "track",
   kind: "podcast",
@@ -643,6 +643,7 @@ const mockPodcastInfo: PodcastInfo = {
   genreIds: ["1310", "26"],
   genres: ["Music", "Podcasts"],
 };
+
 const mockPodcastEpisode: PodcastEpisode[] = [
   {
     country: "USA",

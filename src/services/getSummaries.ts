@@ -29,6 +29,7 @@ function getSummaries() {
     storageName: constants.PODCAST_NAMING.summaries,
   });
 
+  // ignore the warning since this file will be deleted soon
   return { summaries: cachedEpisodesDetail as EpisodeSummary[] };
 }
 

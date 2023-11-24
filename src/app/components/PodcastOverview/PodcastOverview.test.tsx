@@ -4,7 +4,7 @@ import { prettyDOM, render, screen } from "@testing-library/react";
 import PodcastOverview from "./PodcastOverview";
 
 import PodcastList from "../PodcastList/PodcastList";
-import { Podcast } from "@/app/mocks/podcastList";
+import { Podcast } from "@/mocks/mockPodcast";
 
 describe("PODCAST LIST", () => {
   let mockPodcasts: Podcast[] = [

@@ -5,7 +5,7 @@ import PodcastFigure from "../../PodcastFigure/PodcastFigure";
 
 import EpisodeSummary from "./EpisodeSummary/EpisodeSummary";
 import { getSummaries } from "@/services/getSummaries";
-import { usePisodes } from "@/app/hooks/useEpisodes";
+import { usePisodes } from "@/hooks/useEpisodes";
 import "./page.scss";
 
 function EpisodeDetail({

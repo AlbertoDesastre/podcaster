@@ -3,7 +3,7 @@ import PodcastCard from "../PodcastCard/PodcastCard";
 import "./PodcastList.scss";
 
 import useFilterPodcasts from "./useFilterPodcast";
-import { Podcast } from "@/app/mocks/podcastList";
+import { Podcast } from "@/mocks/mockPodcast";
 
 function PodcastList({ podcasts }: { podcasts: Podcast[] }) {
   const { filterByNameAndTitle, matchingPodcasts, podcastCount } =

@@ -3,7 +3,7 @@ import { prettyDOM, render, screen, fireEvent } from "@testing-library/react";
 
 import { podcastsTemplate } from "@/assets";
 import PodcastList from "./PodcastList";
-import { Podcast } from "@/app/mocks/podcastList";
+import { Podcast } from "@/mocks/mockPodcast";
 
 describe("PODCAST LIST", () => {
   let mockPodcasts: Podcast[] = [
