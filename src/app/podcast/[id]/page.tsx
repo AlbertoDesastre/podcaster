@@ -23,6 +23,7 @@ function PodcastDetail({ params }: { params: { id: string } }) {
             description={podcast.trackName}
             params={params}
           />
+
           {/* It's necessary to pass the object params since it will be used to redirect to the correct podcast when navigating */}
           <PodcastEpisodeList podcastEpisodes={episodes} params={params} />
         </div>
