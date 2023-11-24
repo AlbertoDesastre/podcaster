@@ -687,45 +687,6 @@ const mockPodcastEpisode: PodcastEpisode[] = [
   {
     country: "USA",
     episodeUrl:
-      "https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_675.mp3?dest-id=2422538",
-    previewUrl:
-      "https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_675.mp3?dest-id=2422538",
-    feedUrl: "https://jbpod.libsyn.com/applepodcast",
-    closedCaptioning: "none",
-    artistIds: [1535844019],
-    collectionViewUrl:
-      "https://itunes.apple.com/us/podcast/the-joe-budden-podcast/id1535809341?mt=2&uo=4",
-    genres: [{ name: "Music", id: "1310" }],
-    episodeGuid: "4a28ac23-1a37-45e4-99a9-053d3305d2c9",
-    description:
-      "The Bionic Six begins this episode recapping each of their weekends (15:05) before moving to the announcement of a new André 3000 solo project ‘New Blue Sun’ due this Friday (35:32). Drake & J. Cole announce a joint tour (53:52), the JBP reacts to Meek Mill & Rick Ross selling 35K first week (59:33), and Chrisean Rock deleted her socials after being accused of assault at a Tamar Braxton concert (1:03:00). Also, Lil Yachty says Hip-Hop is in a terrible place (1:36:36), *SPOILER ALERT* Joe recaps ‘The Killer’ on Netflix (1:40:00), Tasha K is being sued again (1:58:04), a debate takes place over the Joan Rivers ‘Dark Side of Comedy’ episode (2:05:20), Part of the Show (2:21:59), + MORE!\\n Become a Patron of The Joe Budden Podcast for additional bonus episodes and visual content for all things JBP! Join our Patreon here: www.patreon.com/JoeBudden\\n \\n Sleeper Picks: \\n Joe | Rick Ross & Meek Mill (feat. Jeremih) - “Gold Medals”\\n Ice | Lola Brooke - “Dear Dennis”\\n Parks | Ben Kenobe - “Blood”\\n Ish | Naomi Sharon - “If This Is Love”\\n Melyssa | Mezraa & jjad - “Subtle Games”",
-    shortDescription:
-      "The Bionic Six begins this episode recapping each of their weekends (15:05) before moving to the announcement of a new André 3000 solo project ‘New Blue Sun’ due this Friday (35:32). Drake & J. Cole announce a joint tour (53:52), the JBP...",
-    releaseDate: "2023-11-15T08:00:00Z",
-    trackTimeMillis: 10910000,
-    trackId: 1000634878746,
-    trackName: 'Episode 675 | "The Wind Blew"',
-    collectionId: 1535809341,
-    collectionName: "The Joe Budden Podcast",
-    artworkUrl600:
-      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/600x600bb.jpg",
-    artworkUrl60:
-      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/60x60bb.jpg",
-    artistViewUrl:
-      "https://itunes.apple.com/us/artist/the-joe-budden-network/1535844019?mt=2&uo=4",
-    contentAdvisoryRating: "Explicit",
-    trackViewUrl:
-      "https://podcasts.apple.com/us/podcast/episode-675-the-wind-blew/id1535809341?i=1000634878746&uo=4",
-    artworkUrl160:
-      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/160x160bb.jpg",
-    episodeFileExtension: "mp3",
-    episodeContentType: "audio",
-    kind: "podcast-episode",
-    wrapperType: "podcastEpisode",
-  },
-  {
-    country: "USA",
-    episodeUrl:
       "https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_674.mp3?dest-id=2422538",
     previewUrl:
       "https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_674.mp3?dest-id=2422538",

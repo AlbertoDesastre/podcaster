@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { StyledPodcastEpisodeList } from "./StyledPodcastEpisodeList";
 import { PodcastEpisode } from "@/models/PodcastEpisode";
+import { format } from "date-fns";
 
 function PodcastEpisodeList({
   episodes,
@@ -29,13 +30,17 @@ function PodcastEpisodeList({
                 <tr key={episode.episodeGuid}>
                   <td>
                     <Link
-                      href={`/podcast/${params.id}/episode/${episode.episodeUrl}`}
+                      href={`/podcast/${params.id}/episode/${episode.episodeGuid}`}
                     >
                       {episode.trackName}
                     </Link>
                   </td>
-                  <td> {episode.releaseDate}</td>
-                  <td> {episode.episodeContentType}</td>
+                  <td> {format(new Date(episode.releaseDate), "PPP")}</td>
+                  <td>
+                    {new Date(episode.trackTimeMillis).getMinutes() +
+                      ":" +
+                      new Date(episode.trackTimeMillis).getSeconds()}
+                  </td>
                 </tr>
               );
             })}

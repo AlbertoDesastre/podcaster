@@ -1,55 +1,44 @@
 import React from "react";
 import { prettyDOM, render, screen } from "@testing-library/react";
 
-import { podcastEpisodes } from "@/assets";
 import PodcastEpisodeList from "./PodcastEpisodeList";
+import { mockPodcastEpisode, mockPodcastInfo } from "@/assets";
 
 describe("PODCAST EPISODE LIST", () => {
-  test("should render the amount of links equal to the amount of episodes", () => {
-    const episodes = podcastEpisodes[0].episodes;
+  const episodes = mockPodcastEpisode;
+  const podcastId = mockPodcastInfo.artistId.toString();
 
+  test("should render the amount of links equal to the amount of episodes", () => {
     render(
-      <PodcastEpisodeList podcastEpisodes={episodes} params={{ id: "1" }} />
+      <PodcastEpisodeList episodes={episodes} params={{ id: podcastId }} />
     ); // this would emulate the component receiven the ID of the Podcast itself, to then be able to navigate
 
-    // if episodes are defined, each episode has an anchor that translater consumer to "podcast/{podcastId/episodes/{episodeId}"
+    // if episodes are defined, each episode has an anchor that redirects consumer to "podcast/{podcastId/episodes/{episodeId}"
     const anchors = screen.queryAllByRole("link");
     expect(anchors.length).toEqual(episodes.length);
   });
 
   test("should render the content provided by props", () => {
-    const episode1 = podcastEpisodes[0].episodes[0].episodeTitle; // "Episode 1"
-    const episode2 = podcastEpisodes[0].episodes[1].episodeTitle; // "Episode 2"
-    const episode3 = podcastEpisodes[0].episodes[2].episodeTitle; // "Episode 3"
-
     render(
-      <PodcastEpisodeList
-        podcastEpisodes={podcastEpisodes[0].episodes}
-        params={{ id: "1" }}
-      /> // this would emulate the component received the ID of the Podcast itself, to then be able to navigate
+      <PodcastEpisodeList episodes={episodes} params={{ id: podcastId }} />
     );
 
-    expect(screen.queryByText(/Episode 1/i)).toBeInTheDocument();
-    expect(screen.queryByText(/Episode 2/i)).toBeInTheDocument();
-    expect(screen.queryByText(/Episode 3/i)).toBeInTheDocument();
-  });
+    // Title of the podcast episode
+    expect(
+      screen.queryByText(/Episode 675 | "The Wind Blew"/i)
+    ).toBeInTheDocument(); // this appears on the mockPodcastEpisode, position 0
+    expect(
+      screen.queryByText(/Episode 674 | "Refer to The Tag"/i)
+    ).toBeInTheDocument(); // this appears on the mockPodcastEpisode, position 1
 
-  test("should render link based on the podcastId", () => {
-    const podcastPassedByProps = podcastEpisodes[0];
-    const view = render(
-      <PodcastEpisodeList
-        podcastEpisodes={podcastEpisodes[0].episodes}
-        params={{ id: "1" }}
-      />
-    );
+    // Link that redirects to the episode itself
 
-    const linkToPodcast = view.container.querySelector("a");
-
-    // the main attributes of PodcastFigure
-    expect(linkToPodcast).toBeInTheDocument();
-    expect(linkToPodcast).toHaveAttribute(
+    const linkEpisode = screen.getAllByRole("link")[0];
+    const episodeId = mockPodcastEpisode[0].episodeGuid;
+    expect(linkEpisode).toBeInTheDocument();
+    expect(linkEpisode).toHaveAttribute(
       "href",
-      `/podcast/1/episode/${podcastPassedByProps.id}`
+      `/podcast/${podcastId}/episode/${episodeId}`
     );
   });
 });
