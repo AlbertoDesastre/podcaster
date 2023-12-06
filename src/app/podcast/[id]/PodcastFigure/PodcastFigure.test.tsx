@@ -1,75 +1,50 @@
 import React from "react";
 import { prettyDOM, render, screen } from "@testing-library/react";
 
-import { mockPodcastInfo, mockPodcastEpisode } from "@/assets";
-import PodcastDetail from "../page";
+import {
+  mockPodcastInfo,
+  mockPodcastEpisode,
+  mockEpisodeSummary,
+} from "@/assets";
+
 import PodcastFigure from "./PodcastFigure";
 
 describe("PODCAST FIGURE", () => {
-  test("", () => {});
+  const podcast = mockPodcastInfo;
+  // const episodes = mockPodcastEpisode;
+  const summary = mockEpisodeSummary;
+  const params = { id: mockPodcastInfo.artistId.toString() };
 
-  /*   test("should render the selected podcast details and not render the rest", () => {
-    const params = { id: podcastEpisodes[1].id };
-    render(<PodcastDetail params={params} />);
-
-    // the episode given by params:
-    expect(screen.getByText(podcastEpisodes[1].title)).toBeInTheDocument();
-    expect(
-      screen.getByText("by " + podcastEpisodes[1].artist)
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(podcastEpisodes[1].description)
-    ).toBeInTheDocument();
-
-    // some random episode...
-    expect(() => screen.getByText(podcastEpisodes[6].title)).toThrow();
-    expect(() => screen.getByText(podcastEpisodes[6].artist)).toThrow();
-  }); */
-  /*   test("should render data passed by props and nothing else", () => {
-    const podcastPassedByProps = podcastEpisodes[0];
+  test("should render data passed by props and nothing else", () => {
     render(
       <PodcastFigure
-        title={podcastPassedByProps.title}
-        artist={podcastPassedByProps.artist}
-        description={podcastPassedByProps.description}
-        params={{ id: "1", episodeId: podcastPassedByProps.id }}
+        title={podcast.trackName}
+        artist={podcast.artistName}
+        summary={summary}
+        params={params}
       />
     );
 
     // the main attributes of PodcastFigure
-    expect(screen.getByText(podcastPassedByProps.title)).toBeInTheDocument();
-    expect(
-      screen.getByText("by " + podcastPassedByProps.artist)
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(podcastPassedByProps.description)
-    ).toBeInTheDocument();
-
-    const podcastNotPassed = podcastEpisodes[5];
-
-    // a podcast that wasn't passed by props
-    expect(() => screen.getByText(podcastNotPassed.title)).toThrow();
-    expect(() => screen.getByText(podcastNotPassed.artist)).toThrow();
+    expect(screen.getByText(podcast.trackName)).toBeInTheDocument();
+    expect(screen.getByText("by " + podcast.artistName)).toBeInTheDocument();
+    expect(screen.getByText(summary)).toBeInTheDocument();
   });
 
   test("should render link based on the podcastId", () => {
-    const podcastPassedByProps = podcastEpisodes[0];
-    const view = render(
+    render(
       <PodcastFigure
-        title={podcastPassedByProps.title}
-        artist={podcastPassedByProps.artist}
-        description={podcastPassedByProps.description}
-        params={{ id: "1", episodeId: podcastPassedByProps.id }}
+        title={podcast.trackName}
+        artist={podcast.artistName}
+        summary={summary}
+        params={params}
       />
     );
 
-    const linkToPodcast = view.container.querySelector("a");
+    const linkToPodcast = screen.queryAllByRole("link")[0];
 
     // the main attributes of PodcastFigure
     expect(linkToPodcast).toBeInTheDocument();
-    expect(linkToPodcast).toHaveAttribute(
-      "href",
-      `/podcast/${podcastPassedByProps.id}`
-    );
-  }); */
+    expect(linkToPodcast).toHaveAttribute("href", `/podcast/${params.id}`);
+  });
 });

@@ -1,3 +1,4 @@
+import { Podcast } from "./models/Podcast";
 import { PodcastEpisode, PodcastInfo } from "./models/PodcastEpisode";
 
 const episodesDetail = [
@@ -603,6 +604,267 @@ const episodesDetail = [
   },
 ];
 
+const mockPodcasts: Podcast[] = [
+  {
+    "im:name": {
+      label: "The Joe Budden Podcast",
+    },
+    "im:image": [
+      {
+        label:
+          "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/55x55bb.png",
+        attributes: {
+          height: "55",
+        },
+      },
+      {
+        label:
+          "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/60x60bb.png",
+        attributes: {
+          height: "60",
+        },
+      },
+      {
+        label:
+          "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/170x170bb.png",
+        attributes: {
+          height: "170",
+        },
+      },
+    ],
+    summary: {
+      label:
+        "Tune into Joe Budden and his friends. Follow along the crazy adventures of these very random friends.",
+    },
+    "im:price": {
+      label: "Get",
+      attributes: {
+        amount: "0",
+        currency: "USD",
+      },
+    },
+    "im:contentType": {
+      attributes: {
+        term: "Podcast",
+        label: "Podcast",
+      },
+    },
+    rights: {
+      label: "© All rights reserved",
+    },
+    title: {
+      label: "The Joe Budden Podcast - The Joe Budden Network",
+    },
+    link: {
+      attributes: {
+        rel: "alternate",
+        type: "text/html",
+        href: "https://podcasts.apple.com/us/podcast/the-joe-budden-podcast/id1535809341?uo=2",
+      },
+    },
+    id: {
+      label:
+        "https://podcasts.apple.com/us/podcast/the-joe-budden-podcast/id1535809341?uo=2",
+      attributes: {
+        "im:id": "1535809341",
+      },
+    },
+    "im:artist": {
+      label: "The Joe Budden Network",
+      attributes: {
+        href: "https://podcasts.apple.com/us/artist/the-joe-budden-network/1535844019?uo=2",
+      },
+    },
+    category: {
+      attributes: {
+        "im:id": "1310",
+        term: "Music",
+        scheme:
+          "https://podcasts.apple.com/us/genre/podcasts-music/id1310?uo=2",
+        label: "Music",
+      },
+    },
+    "im:releaseDate": {
+      label: "2023-12-02T00:00:00-07:00",
+      attributes: {
+        label: "December 2, 2023",
+      },
+    },
+  },
+  {
+    "im:name": {
+      label: "Million Dollaz Worth Of Game",
+    },
+    "im:image": [
+      {
+        label:
+          "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/7b/cf/f6/7bcff6bb-5f99-6c2f-c6c5-3a9799f3df21/mza_8544742664200824246.jpg/55x55bb.png",
+        attributes: {
+          height: "55",
+        },
+      },
+      {
+        label:
+          "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/7b/cf/f6/7bcff6bb-5f99-6c2f-c6c5-3a9799f3df21/mza_8544742664200824246.jpg/60x60bb.png",
+        attributes: {
+          height: "60",
+        },
+      },
+      {
+        label:
+          "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/7b/cf/f6/7bcff6bb-5f99-6c2f-c6c5-3a9799f3df21/mza_8544742664200824246.jpg/170x170bb.png",
+        attributes: {
+          height: "170",
+        },
+      },
+    ],
+    summary: {
+      label:
+        "The Million Dollaz Worth of Game show, a weekly podcast with rapper/actor @GillieDaKing and social media influencer and disruptor @Wallo267 - The perfect blend of discussing music, real-life issues, personal experiences, honest advice, and comedy. You can find every episode of this show on Apple Podcasts, Spotify, or YouTube. Prime Members can listen ad-free on Amazon Music. For more, visit barstool.link/mworthofgame",
+    },
+    "im:price": {
+      label: "Get",
+      attributes: {
+        amount: "0",
+        currency: "USD",
+      },
+    },
+    "im:contentType": {
+      attributes: {
+        term: "Podcast",
+        label: "Podcast",
+      },
+    },
+    rights: {
+      label: "© 2023 Barstool Sports, Inc.",
+    },
+    title: {
+      label: "Million Dollaz Worth Of Game - Barstool Sports",
+    },
+    link: {
+      attributes: {
+        rel: "alternate",
+        type: "text/html",
+        href: "https://podcasts.apple.com/us/podcast/million-dollaz-worth-of-game/id1460157002?uo=2",
+      },
+    },
+    id: {
+      label:
+        "https://podcasts.apple.com/us/podcast/million-dollaz-worth-of-game/id1460157002?uo=2",
+      attributes: {
+        "im:id": "1460157002",
+      },
+    },
+    "im:artist": {
+      label: "Barstool Sports",
+      attributes: {
+        href: "https://podcasts.apple.com/us/artist/barstool-sports/1524874689?uo=2",
+      },
+    },
+    category: {
+      attributes: {
+        "im:id": "1523",
+        term: "Music Commentary",
+        scheme:
+          "https://podcasts.apple.com/us/genre/podcasts-music-music-commentary/id1523?uo=2",
+        label: "Music Commentary",
+      },
+    },
+    "im:releaseDate": {
+      label: "2023-12-05T16:30:00-07:00",
+      attributes: {
+        label: "December 5, 2023",
+      },
+    },
+  },
+  {
+    "im:name": {
+      label: "DISGRACELAND",
+    },
+    "im:image": [
+      {
+        label:
+          "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/e4/0c/d2/e40cd24d-1d79-7a57-bce9-4d2b77786473/mza_15680661846072215830.jpeg/55x55bb.png",
+        attributes: {
+          height: "55",
+        },
+      },
+      {
+        label:
+          "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/e4/0c/d2/e40cd24d-1d79-7a57-bce9-4d2b77786473/mza_15680661846072215830.jpeg/60x60bb.png",
+        attributes: {
+          height: "60",
+        },
+      },
+      {
+        label:
+          "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/e4/0c/d2/e40cd24d-1d79-7a57-bce9-4d2b77786473/mza_15680661846072215830.jpeg/170x170bb.png",
+        attributes: {
+          height: "170",
+        },
+      },
+    ],
+    summary: {
+      label:
+        "Disgraceland is the award-winning music podcast hosted by Jake Brennan that explores the alleged true crime antics and criminal connections of musicians we love like Jerry Lee Lewis, the Rolling Stones, Taylor Swift, David Bowie, Cardi B, the Grateful Dead, Amy Winehouse, Bob Marley, and more. Disgraceland is a scripted, single voice narrative storytelling podcast that melds true crime, music history, mystery, and misadventure. Disgraceland is not a journalistic podcast. It is an entertainment podcast inspired by true events. Certain dialogue and scenes are sometimes fictionalized for dramatic purposes as they are in most scripted entertainment based on true events. Sources and credits for each episode are available at disgracelandpod.com. Full scripted episodes are released every Tuesday. Bonus “After Party” episodes are released every Thursday. Disgraceland is available wherever you get your podcasts.",
+    },
+    "im:price": {
+      label: "Get",
+      attributes: {
+        amount: "0",
+        currency: "USD",
+      },
+    },
+    "im:contentType": {
+      attributes: {
+        term: "Podcast",
+        label: "Podcast",
+      },
+    },
+    rights: {
+      label: "© Double Elvis",
+    },
+    title: {
+      label: "DISGRACELAND - Double Elvis Productions",
+    },
+    link: {
+      attributes: {
+        rel: "alternate",
+        type: "text/html",
+        href: "https://podcasts.apple.com/us/podcast/disgraceland/id1275172907?uo=2",
+      },
+    },
+    id: {
+      label:
+        "https://podcasts.apple.com/us/podcast/disgraceland/id1275172907?uo=2",
+      attributes: {
+        "im:id": "1275172907",
+      },
+    },
+    "im:artist": {
+      label: "Double Elvis Productions",
+      attributes: {
+        href: "https://podcasts.apple.com/us/artist/double-elvis-productions/1275172906?uo=2",
+      },
+    },
+    category: {
+      attributes: {
+        "im:id": "1310",
+        term: "Music",
+        scheme:
+          "https://podcasts.apple.com/us/genre/podcasts-music/id1310?uo=2",
+        label: "Music",
+      },
+    },
+    "im:releaseDate": {
+      label: "2023-12-05T00:04:00-07:00",
+      attributes: {
+        label: "December 5, 2023",
+      },
+    },
+  },
+];
+
 const mockPodcastInfo: PodcastInfo = {
   wrapperType: "track",
   kind: "podcast",
@@ -725,4 +987,13 @@ const mockPodcastEpisode: PodcastEpisode[] = [
   },
 ];
 
-export { mockPodcastInfo, mockPodcastEpisode, episodesDetail };
+const mockEpisodeSummary: string =
+  "Tune into Joe Budden and his friends. Follow along the crazy adventures of these very random friends.";
+
+export {
+  mockPodcasts,
+  mockPodcastInfo,
+  mockPodcastEpisode,
+  episodesDetail,
+  mockEpisodeSummary,
+};

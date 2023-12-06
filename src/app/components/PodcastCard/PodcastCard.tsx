@@ -1,7 +1,7 @@
 import { StyledPodcastCard } from "./StyledPodcastCard";
 import Link from "next/link";
 import constants from "@/constants.json";
-import { Podcast } from "@/mocks/mockPodcast";
+import { Podcast } from "@/models/Podcast";
 
 function PodcastCard({ podcast }: { podcast: Podcast }) {
   const id = podcast.id.attributes["im:id"];

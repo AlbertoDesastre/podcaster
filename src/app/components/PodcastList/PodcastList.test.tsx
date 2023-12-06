@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom";
 import { prettyDOM, render, screen, fireEvent } from "@testing-library/react";
 
-import { podcastsTemplate } from "@/assets";
 import PodcastList from "./PodcastList";
 import { Podcast } from "@/mocks/mockPodcast";
 

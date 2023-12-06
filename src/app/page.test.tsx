@@ -1,14 +1,8 @@
 import "@testing-library/jest-dom";
 import { prettyDOM, render } from "@testing-library/react";
-import Home from "./page";
 import Dashboard from "./components/Dashboard/Dashboard";
 import PodcastOverview from "./components/PodcastOverview/PodcastOverview";
 import PodcastList from "./components/PodcastList/PodcastList";
-
-let mockUsePodcastResponse = {
-  podcasts: [],
-  loading: false,
-};
 
 describe("HOME", () => {
   beforeEach(() => {

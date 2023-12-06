@@ -4,12 +4,12 @@ import { StyledPodcasFigure } from "./StyledPodcastFigure";
 function PodcastFigure({
   title,
   artist,
-  description,
+  summary,
   params,
 }: {
   title: string;
   artist: string;
-  description: string;
+  summary: string;
   params: {
     id: string;
     episodeId?: string;
@@ -30,7 +30,7 @@ function PodcastFigure({
       </div>
       <div className="description-container">
         <h4>Description:</h4>
-        <p>{description} </p>
+        <p>{summary} </p>
       </div>
     </StyledPodcasFigure>
   );

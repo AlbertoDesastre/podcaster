@@ -9,7 +9,9 @@ import { useEpisodes } from "@/hooks/useEpisodes";
 
 function PodcastDetail({ params }: { params: { id: string } }) {
   // this id it's the artistId coming from ^ previous page ^.
-  const { episodes, podcast, loading } = useEpisodes({ artistId: params.id });
+  const { episodes, podcast, summary, loading } = useEpisodes({
+    artistId: params.id,
+  });
 
   return (
     <Dashboard loading={false}>
@@ -20,7 +22,7 @@ function PodcastDetail({ params }: { params: { id: string } }) {
           <PodcastFigure
             title={podcast.trackName}
             artist={podcast.artistName}
-            description={podcast.trackName}
+            summary={summary}
             params={params}
           />
 
